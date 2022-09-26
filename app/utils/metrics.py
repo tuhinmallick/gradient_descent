@@ -1,3 +1,5 @@
+import numpy as np
+
 #Helper Functions
 def f(x,w,b):
     '''Sigmoid Function'''
