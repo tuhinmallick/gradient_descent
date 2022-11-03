@@ -31,7 +31,7 @@ class Adam(Page):
             Page.content(st.markdown("##### Gradient Descent Update Rule"))
             Page.content(st.image("app/data/adam_code.png", use_column_width="always"))
         Page.content(st.markdown("##### In the batch gradient descent, we iterate over all the training data points and compute the cumulative sum of gradients for parameters ‘w’ and ‘b’. Then update the values of parameters based on the cumulative gradient value and the learning rate."))
-        col3, col4 = st.columns(2)✽
+        col3, col4 = st.columns(2)
         with col3:
             Page.content(st.markdown("### Pros:"))
             Page.content(st.markdown("##### ✽ Can handle sparse gradients on noisy datasets."))
