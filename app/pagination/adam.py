@@ -31,13 +31,17 @@ class Adam(Page):
             Page.content(st.markdown("##### Gradient Descent Update Rule"))
             Page.content(st.image("app/data/adam_code.png", use_column_width="always"))
         Page.content(st.markdown("##### In the batch gradient descent, we iterate over all the training data points and compute the cumulative sum of gradients for parameters ‘w’ and ‘b’. Then update the values of parameters based on the cumulative gradient value and the learning rate."))
-        col3, col4 = st.columns(2)
+        col3, col4 = st.columns(2)✽
         with col3:
             Page.content(st.markdown("### Pros:"))
-            Page.content(st.markdown("##### Guaranteed to converge to global minimum for convex error surfaces and to a local minimum for non-convex surfaces."))
+            Page.content(st.markdown("##### ✽ Can handle sparse gradients on noisy datasets."))
+            Page.content(st.markdown("##### ✽ Default hyperparameter values do well on most problems."))
+            Page.content(st.markdown("##### ✽ Computationally efficient and requires little memory, thus memory efficient."))
+
         with col4:
             Page.content(st.markdown("### Cons:"))
-            Page.content(st.markdown("##### Very slow."))
+            Page.content(st.markdown("##### ✽ Adam does not converge to an optimal solution in some areas (this is the motivation for AMSGrad) "))
+            Page.content(st.markdown("##### ✽ Adam can suffer a weight decay problem (which is addressed in AdamW)."))
         hyperpara = filter_table_option_adam()
         train = trainer()
         if train:
