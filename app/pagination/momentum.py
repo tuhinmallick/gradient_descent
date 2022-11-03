@@ -34,10 +34,13 @@ class Momentum(Page):
         col3, col4 = st.columns(2)
         with col3:
             Page.content(st.markdown("### Pros:"))
-            Page.content(st.markdown("##### Guaranteed to converge to global minimum for convex error surfaces and to a local minimum for non-convex surfaces."))
+            Page.content(st.markdown("##### ✽ Helps to accelerate in the relevant direction and dampens oscillation."))
+            Page.content(st.markdown("##### ✽ Faster convergence"))
         with col4:
             Page.content(st.markdown("### Cons:"))
-            Page.content(st.markdown("##### Very slow."))
+            Page.content(st.markdown("##### ✽ Does not have the notion of where it is going so does not slows down when hipp slopes up again."))
+            Page.content(st.markdown("##### ✽ Does not update each individual parameter to perform larger or smaller updates depending on their importance."))
+            Page.content(st.markdown("##### ✽ Is not adaptive"))
         hyperpara = filter_table_option_mom()
         train = trainer()
         if train:

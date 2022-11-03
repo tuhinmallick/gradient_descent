@@ -34,10 +34,12 @@ class Adagrad(Page):
         col3, col4 = st.columns(2)
         with col3:
             Page.content(st.markdown("### Pros:"))
-            Page.content(st.markdown("##### Guaranteed to converge to global minimum for convex error surfaces and to a local minimum for non-convex surfaces."))
+            Page.content(st.markdown("##### ✽ Updates each individual parameter to perform larger or smaller updates on its importance"))
+            Page.content(st.markdown("##### ✽ Is adaptive"))
         with col4:
             Page.content(st.markdown("### Cons:"))
-            Page.content(st.markdown("##### Very slow."))
+            Page.content(st.markdown("##### ✽ Accumulationof squared gradients: Since every added term is positive, the accumulated sum keeps growing."))
+            Page.content(st.markdown("##### ✽ Leads to skrinkage of learning rate leading to its value being infinitesimally small."))
         hyperpara = filter_table_option_adagrad()
         train = trainer()
         if train:

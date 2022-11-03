@@ -34,10 +34,10 @@ class RMSprop(Page):
         col3, col4 = st.columns(2)
         with col3:
             Page.content(st.markdown("### Pros:"))
-            Page.content(st.markdown("##### Guaranteed to converge to global minimum for convex error surfaces and to a local minimum for non-convex surfaces."))
+            Page.content(st.markdown("##### ✽ Instead of storing inefficiently all previous gradients - recursively defines as a decaying average of all past squared gradients - learning rate optimally high."))
         with col4:
             Page.content(st.markdown("### Cons:"))
-            Page.content(st.markdown("##### Very slow."))
+            Page.content(st.markdown("##### ✽ Does not keep an exponentiallydecaying average of past gradients"))
         hyperpara = filter_table_option_rmsprop()
         train = trainer()
         if train:
