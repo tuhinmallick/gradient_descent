@@ -1,2 +1,2 @@
-web: sh setup.sh && cd src && streamlit run app/dashboard.py
+web: sh setup.sh && streamlit run app/dashboard.py
 
