@@ -10,7 +10,7 @@ class Page:
     def content(self):
         """Returns the content of the page"""
 
-        raise NotImplementedError("Please implement this method.")
+        # raise NotImplementedError("Please implement this method.")
 
     def title(self):
         """Returns the title of the page"""
