@@ -53,7 +53,7 @@ class Momentum(Page):
             with st_lottie_spinner(lottie_json, quality="high"):
                 
                 col1, col2 = st.columns(2)
-                loss_list,accu_list = main(hyperpara)
+                test_loss_list, test_accu_list,train_loss_list, train_accu_list,dw_list,db_list,batch_loss_list = main(hyperpara)
                 with col1:
                     fig1 = plot_Loss(loss_list,figsize=(650, 500))
                     Page.content(st.plotly_chart(fig1))
