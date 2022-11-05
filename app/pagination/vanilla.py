@@ -26,11 +26,16 @@ class Vanilla(Page):
         col1, col2 = st.columns(2)
         with col1:
             Page.content(st.markdown("##### Parameter update rule will be given by,"))
-            Page.content(st.image("app/data/vanilla.png", use_column_width="always"))
-            
+            Page.content(st.latex(r"w_{t +1} = w_t - \eta \nabla w_{t}"))
+            Page.content(st.latex(r"b_{t +1} = b_t - \eta\nabla b_{t}"))
         with col2:
             Page.content(st.markdown("##### Gradient Descent Update Rule"))
-            Page.content(st.image("app/data/vanilla_code.png", use_column_width="always"))
+            code = '''# Vanilla Gradient Descent
+def GD(w,b,dw,db, learning_rate):
+    w = w - learning_rate * dw
+    b = b - learning_rate*db
+    return (w,b)'''
+            Page.content(st.code(code,language='python  '))
         Page.content(st.markdown("##### In the batch gradient descent, we iterate over all the training data points and compute the cumulative sum of gradients for parameters ‘w’ and ‘b’. Then update the values of parameters based on the cumulative gradient value and the learning rate."))
         col3, col4 = st.columns(2)
         with col3:

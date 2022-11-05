@@ -25,11 +25,25 @@ class RMSprop(Page):
         col1, col2 = st.columns(2)
         with col1:
             Page.content(st.markdown("##### Parameter update rule will be given by,"))
-            Page.content(st.image("app/data/rmsprop.png", use_column_width="always"))
+            Page.content(st.write("For each parameter,"))
+            Page.content(st.latex(r"v_t = \beta * v_{t-1} + (1-\beta) * (\nabla w_t)^2"))
+            Page.content(st.latex(r"w_{t+1} = w_t - \frac{\eta}{\sqrt{v_t + \epsilon}}\nabla w_t "))
             
         with col2:
             Page.content(st.markdown("##### Gradient Descent Update Rule"))
-            Page.content(st.image("app/data/rmsprop_code.png", use_column_width="always"))
+            code = '''
+import numpy as np
+#RMSprop
+#Mini Batch RMSprop
+def RMSprop(w,b,dw,db, learning_rate,update_w,update_b,epsilon,beta):
+    update_w = beta * update_w + (1 - beta)* dw**2
+    update_b = beta * update_b + (1- beta) * db**2
+    w = w - (learning_rate/np.sqrt(update_w + epsilon))*dw
+    b = b - (learning_rate/np.sqrt(update_b + epsilon))*db
+    return (w,b)
+
+    '''
+            Page.content(st.code(code, language="python"))
         Page.content(st.markdown("##### In the batch gradient descent, we iterate over all the training data points and compute the cumulative sum of gradients for parameters ‘w’ and ‘b’. Then update the values of parameters based on the cumulative gradient value and the learning rate."))
         col3, col4 = st.columns(2)
         with col3:
@@ -48,13 +62,11 @@ class RMSprop(Page):
             lottie_json = load_lottiefile("app/data/simulation_animation.json")
             st.markdown("## 2- D graphs")
             with st_lottie_spinner(lottie_json, quality="high"):
-                
                 col1, col2 = st.columns(2)
                 test_loss_list, test_accu_list,train_loss_list, train_accu_list,dw_list,db_list,batch_loss_list = main(hyperpara)
                 with col1:
-                    fig1 = plot_Loss(loss_list,figsize=(650, 500))
+                    fig1 = plot_Loss(train_loss_list,test_loss_list,figsize=(650, 500))
                     Page.content(st.plotly_chart(fig1))
                 with col2:
-                    fig2 = plot_acc(accu_list,figsize=(650, 500))
+                    fig2 = plot_acc(train_accu_list,test_accu_list,figsize=(650, 500))
                     Page.content(st.plotly_chart(fig2))
-

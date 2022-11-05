@@ -25,11 +25,39 @@ class Adam(Page):
         col1, col2 = st.columns(2)
         with col1:
             Page.content(st.markdown("##### Parameter update rule will be given by,"))
-            Page.content(st.image("app/data/adam.png", use_column_width="always"))
+            Page.content(st.write("For each parameter,"))
+            Page.content(st.write("Updating the moemntum of both weight and bias"))   
+            Page.content(st.latex(r"v_t = \beta_1 * v_{t-1} + (1-\beta_1) * (\nabla w_t)^2"))
+            Page.content(st.write("Updating the history of both weight and bias"))  
+            Page.content(st.latex(r"s_t = \beta_2 * v_{t-1} + (1-\beta_2) * (\nabla w_t)^2"))
+            Page.content(st.write("Bias correction"))
+            Page.content(st.latex(r"v_t = \frac{v_t}{1-\beta_1^t}"))
+            Page.content(st.latex(r"s_t = \frac{s_t}{1-\beta_2^t}"))
+            Page.content(st.latex(r"w_{t+1} = w_t - \frac{\eta}{\sqrt{s_t + \epsilon}}\nabla v_t "))
             
         with col2:
             Page.content(st.markdown("##### Gradient Descent Update Rule"))
-            Page.content(st.image("app/data/adam_code.png", use_column_width="always"))
+            code = '''
+import numpy as np
+import math
+#Mini Batch Adam
+def Adam(w,b,dw,db, learning_rate,update_w,update_b,epsilon,beta1,beta2,momentum_w,momentum_b,batch ):
+    #Momentum
+    momentum_w = beta1 * momentum_w + (1 - beta1) * dw
+    momentum_b = beta1 * momentum_b + (1 - beta1) * db
+    #Update History
+    update_w = beta2 * update_w + (1 - beta2) * dw**2
+    update_b = beta2 * update_b + (1 - beta2) * db**2 
+    #Bias Correction
+    momentum_w = momentum_w /(1 - math.pow(beta1,batch+1))  
+    momentum_b = momentum_b /(1 - math.pow(beta1,batch+1))
+    update_w = update_w /(1 - math.pow(beta2,batch+1))  
+    update_b = update_b /(1 - math.pow(beta2,batch+1))
+    #Update of Parameters
+    w = w - (learning_rate/np.sqrt(update_w + epsilon))*momentum_w
+    b = b - (learning_rate/np.sqrt(update_b + epsilon))*momentum_b
+    return (w,b)'''
+            Page.content(st.code(code, language="python"))
         Page.content(st.markdown("##### In the batch gradient descent, we iterate over all the training data points and compute the cumulative sum of gradients for parameters ‘w’ and ‘b’. Then update the values of parameters based on the cumulative gradient value and the learning rate."))
         col3, col4 = st.columns(2)
         with col3:
@@ -52,9 +80,8 @@ class Adam(Page):
             lottie_json = load_lottiefile("app/data/simulation_animation.json")
             st.markdown("## 2- D graphs")
             with st_lottie_spinner(lottie_json, quality="high"):
-                
                 col1, col2 = st.columns(2)
-                test_loss_list, test_accu_list,train_loss_list, train_accu_list,dw_list,db_list,batch_loss_list  = main(hyperpara)
+                test_loss_list, test_accu_list,train_loss_list, train_accu_list,dw_list,db_list,batch_loss_list = main(hyperpara)
                 with col1:
                     fig1 = plot_Loss(train_loss_list,test_loss_list,figsize=(650, 500))
                     Page.content(st.plotly_chart(fig1))

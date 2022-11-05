@@ -25,11 +25,27 @@ class Momentum(Page):
         col1, col2 = st.columns(2)
         with col1:
             Page.content(st.markdown("##### Parameter update rule will be given by,"))
-            Page.content(st.image("app/data/mom.png", use_column_width="always"))
+            Page.content(st.write("Without Momemntum,"))
+            Page.content(st.latex(r"w_{t +1} = w_t - \eta \nabla w_{t}"))
+            Page.content(st.latex(r"b_{t +1} = b_t - \eta\nabla b_{t}"))
+            Page.content(st.write("With  Momemntum,"))
+            Page.content(st.latex(r"update^w_{t +1} = \gamma * update^w_t + \eta\nabla w_{t}"))
+            Page.content(st.latex(r"update^b_{t +1} = \gamma * update^b_t + \eta\nabla b_{t}"))
+            Page.content(st.latex(r"w_{t +1} = w_t - update^w_{t +1}"))
+            Page.content(st.latex(r"b_{t +1} = b_t - update^b_{t +1}"))
+
             
         with col2:
             Page.content(st.markdown("##### Gradient Descent Update Rule"))
-            Page.content(st.image("app/data/mom_code.png", use_column_width="always"))
+            code = '''#Momentum_GD
+#Mini Batch Momentum Based Gradient Discent
+def Momentum_GD(w,b,dw,db, learning_rate,mu,w_velocity,b_velocity):
+    w_velocity = mu * w_velocity + learning_rate * dw
+    b_velocity = mu * b_velocity + learning_rate * db
+    w -= w_velocity
+    b-= b_velocity
+    return (w,b)'''
+            Page.content(st.code(code,language="python"))
         Page.content(st.markdown("##### In the batch gradient descent, we iterate over all the training data points and compute the cumulative sum of gradients for parameters ‘w’ and ‘b’. Then update the values of parameters based on the cumulative gradient value and the learning rate."))
         col3, col4 = st.columns(2)
         with col3:
@@ -51,13 +67,12 @@ class Momentum(Page):
             lottie_json = load_lottiefile("app/data/simulation_animation.json")
             st.markdown("## 2- D graphs")
             with st_lottie_spinner(lottie_json, quality="high"):
-                
                 col1, col2 = st.columns(2)
                 test_loss_list, test_accu_list,train_loss_list, train_accu_list,dw_list,db_list,batch_loss_list = main(hyperpara)
                 with col1:
-                    fig1 = plot_Loss(loss_list,figsize=(650, 500))
+                    fig1 = plot_Loss(train_loss_list,test_loss_list,figsize=(650, 500))
                     Page.content(st.plotly_chart(fig1))
                 with col2:
-                    fig2 = plot_acc(accu_list,figsize=(650, 500))
+                    fig2 = plot_acc(train_accu_list,test_accu_list,figsize=(650, 500))
                     Page.content(st.plotly_chart(fig2))
 

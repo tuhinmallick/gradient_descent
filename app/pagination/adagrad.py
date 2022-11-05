@@ -25,11 +25,21 @@ class Adagrad(Page):
         col1, col2 = st.columns(2)
         with col1:
             Page.content(st.markdown("##### Parameter update rule will be given by,"))
-            Page.content(st.image("app/data/adagrad.png", use_column_width="always"))
+            Page.content(st.latex(r"G_t = G_{t-1} + (\nabla w_t)^2"))
+            Page.content(st.latex(r"w_{new} = w_{old} - \frac{\eta}{\sqrt{G_t +\epsilon}} \nabla w_t"))
             
         with col2:
             Page.content(st.markdown("##### Gradient Descent Update Rule"))
-            Page.content(st.image("app/data/adagrad_code.png", use_column_width="always"))
+            code = '''
+import numpy as np
+#Mini Batch Adagrad
+def Adagrad(w,b,dw,db, learning_rate,update_w,update_b,epsilon):
+    update_w += dw**2
+    update_b += db**2
+    w = w - (learning_rate/np.sqrt(update_w + epsilon))*dw
+    b = b - (learning_rate/np.sqrt(update_b + epsilon))*db
+    return (w,b)'''
+            Page.content(st.code(code, language="python"))
         Page.content(st.markdown("##### In Adagrad, we are maintaining the running squared sum of gradients and then we update the parameters by dividing the learning rate with the square root of the historical values. Instead of having a static learning rate here we have dynamic learning for dense and sparse features."))
         col3, col4 = st.columns(2)
         with col3:
@@ -50,13 +60,12 @@ class Adagrad(Page):
             lottie_json = load_lottiefile("app/data/simulation_animation.json")
             st.markdown("## 2- D graphs")
             with st_lottie_spinner(lottie_json, quality="high"):
-                
                 col1, col2 = st.columns(2)
                 test_loss_list, test_accu_list,train_loss_list, train_accu_list,dw_list,db_list,batch_loss_list = main(hyperpara)
                 with col1:
-                    fig1 = plot_Loss(loss_list,figsize=(650, 500))
+                    fig1 = plot_Loss(train_loss_list,test_loss_list,figsize=(650, 500))
                     Page.content(st.plotly_chart(fig1))
                 with col2:
-                    fig2 = plot_acc(accu_list,figsize=(650, 500))
+                    fig2 = plot_acc(train_accu_list,test_accu_list,figsize=(650, 500))
                     Page.content(st.plotly_chart(fig2))
 
