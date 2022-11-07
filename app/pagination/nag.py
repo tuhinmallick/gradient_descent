@@ -54,6 +54,7 @@ def NAG(w,b,dw,db, learning_rate,w_look_ahead,b_look_ahead,prev_w_look_ahead,pre
 '''
             Page.content(st.code(code, language="python"))
         Page.content(st.markdown("##### Instead of evaluating gradient at the current position (red circle), we know that our momentum is about to carry us to the tip of the green arrow. With Nesterov momentum we therefore instead evaluate the gradient at this looked-ahead position. "))
+        Page.content(st.markdown("##### Again, we set the momentum term γ to a value of around 0.9. While Momentum first computes the current gradient (small blue vector in Image 4) and then takes a big jump in the direction of the updated accumulated gradient (big blue vector), NAG first makes a big jump in the direction of the previous accumulated gradient (brown vector), measures the gradient and then makes a correction (red vector), which results in the complete NAG update (green vector). This anticipatory update prevents us from going too fast and results in increased responsiveness, which has significantly increased the performance of RNNs on a number of tasks"))
         Page.content(st.image("app/data/nesterov.png", use_column_width="always"))
         col3, col4 = st.columns(2)
         with col3:

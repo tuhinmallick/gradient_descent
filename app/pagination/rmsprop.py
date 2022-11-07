@@ -44,7 +44,7 @@ def RMSprop(w,b,dw,db, learning_rate,update_w,update_b,epsilon,beta):
 
     '''
             Page.content(st.code(code, language="python"))
-        Page.content(st.markdown("##### In the batch gradient descent, we iterate over all the training data points and compute the cumulative sum of gradients for parameters ‘w’ and ‘b’. Then update the values of parameters based on the cumulative gradient value and the learning rate."))
+        Page.content(st.markdown("##### The only change we need to do in AdaGrad code is how we update the variables   v_w   and   v_b  . In AdaGrad   v_w   and v_b is always increasing by squares of the gradient per parameter wise since the first epoch but in RMSProp   v_w   and   v_b   is exponentially decaying weighted sum of gradients by using a hyperparameter called ‘gamma’."))
         col3, col4 = st.columns(2)
         with col3:
             Page.content(st.markdown("### Pros:"))

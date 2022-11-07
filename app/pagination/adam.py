@@ -58,7 +58,7 @@ def Adam(w,b,dw,db, learning_rate,update_w,update_b,epsilon,beta1,beta2,momentum
     b = b - (learning_rate/np.sqrt(update_b + epsilon))*momentum_b
     return (w,b)'''
             Page.content(st.code(code, language="python"))
-        Page.content(st.markdown("##### In the batch gradient descent, we iterate over all the training data points and compute the cumulative sum of gradients for parameters ‘w’ and ‘b’. Then update the values of parameters based on the cumulative gradient value and the learning rate."))
+        Page.content(st.markdown("##### Adam also keeps an exponentially decaying average of past gradients mt, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface"))
         col3, col4 = st.columns(2)
         with col3:
             Page.content(st.markdown("### Pros:"))
