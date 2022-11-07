@@ -46,7 +46,7 @@ def Momentum_GD(w,b,dw,db, learning_rate,mu,w_velocity,b_velocity):
     b-= b_velocity
     return (w,b)'''
             Page.content(st.code(code,language="python"))
-        Page.content(st.markdown("##### Essentially, when using momentum, we push a ball down a hill. The ball accumulates momentum as it rolls downhill, becoming faster and faster on the way (until it reaches its terminal velocity if there is air resistance, i.e. γ<1). The same thing happens to our parameter updates: The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. As a result, we gain faster convergence and reduced oscillation."))
+        Page.content(st.markdown("##### Essentially, when using momentum, we push a ball down a hill. The ball accumulates momentum as it rolls downhill, becoming faster and faster on the way (until it reaches its terminal velocity if there is air resistance, i.e. mu<1). The same thing happens to our parameter updates: The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. As a result, we gain faster convergence and reduced oscillation."))
         col3, col4 = st.columns(2)
         with col3:
             Page.content(st.markdown("### Pros:"))
