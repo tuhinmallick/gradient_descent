@@ -21,3 +21,5 @@ Start the dasboard:
 - `cd app`
 - `streamlit run dashboard.py`
 
+
+https://www.galactica.org/?max_new_tokens=2000&prompt=literature+review+of+gradient+descent
