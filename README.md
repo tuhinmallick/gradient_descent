@@ -120,10 +120,9 @@ This is an example of how to list things you need to use the package and how to 
     setup.sh
    ```
 5. Run the streamlit app
-    ```bash
+   ```bash
    streamlit run app/dashboard.py
    ```
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
