@@ -23,10 +23,10 @@
     <img src="docs/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">gradient_descent</h3>
+<h3 align="center">Gradient_descent</h3>
 
   <p align="center">
-    gradient_descent is a python package that helps in detecting insider trading activities in the stock market.
+    Gradient Descent is a streamlit project that will create and train a logistic regression model in Python using the MNIST dataset (no PyTorch). To properly train the logistic regression model on the Training Set, stochastic gradient descent must be used. On the Test Set, its accuracy should be between 90 and 93%..
     <br />
     <a href="https://github.com/tuhinmallick/gradient_descent"><strong>Explore the docs »</strong></a>
     <br />
