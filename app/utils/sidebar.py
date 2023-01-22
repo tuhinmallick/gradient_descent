@@ -28,15 +28,15 @@ def filter_table_option_vanilla():
     batch_size = st.sidebar.number_input('Batch Size', 1, 1000, step =1,value=10, key= 'batch_size')
     learning_rate = st.sidebar.number_input('Learning rate', min_value = 0.5, max_value = 100.00, step = 0.01,value=2.5,key= 'learning_rate' )
     learning_decay_ = st.sidebar.checkbox("Learning decay")
-   
+
     hyp = {'num_epoches': num_epoches,
             'learning_rate':learning_rate/1000,
             'learning_decay_':learning_decay_,
             'algo':"vanilla", 
             "batch_size":batch_size }
     if learning_decay_:
-        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )        
-        hyp.update({'decay_factor':decay_factor})
+        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )
+        hyp['decay_factor'] = decay_factor
 
     return hyp
 def filter_table_option_mom():
@@ -46,7 +46,7 @@ def filter_table_option_mom():
     learning_rate = st.sidebar.number_input('Learning rate', min_value = 0.5, max_value = 100.00, step = 0.01,value=2.5,key= 'learning_rate' )
     momentum = st.sidebar.slider('Momentum', 0.1, 1.0, step =0.1,value=0.9, key= 'momentum')
     learning_decay_ = st.sidebar.checkbox("Learning decay")
-   
+
     hyp = {'num_epoches': num_epoches,
             'learning_rate':learning_rate/1000,
             'learning_decay_':learning_decay_,
@@ -54,8 +54,8 @@ def filter_table_option_mom():
             'algo':"momentum", 
             "batch_size":batch_size }
     if learning_decay_:
-        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )        
-        hyp.update({'decay_factor':decay_factor})
+        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )
+        hyp['decay_factor'] = decay_factor
 
     return hyp
 
@@ -66,7 +66,7 @@ def filter_table_option_nag():
     learning_rate = st.sidebar.number_input('Learning rate', min_value = 0.5, max_value = 100.00, step = 0.01,value=2.5,key= 'learning_rate' )
     momentum = st.sidebar.slider('Momentum', 0.1, 1.0, step =0.1,value=0.9, key= 'momentum')
     learning_decay_ = st.sidebar.checkbox("Learning decay")
-   
+
     hyp = {'num_epoches': num_epoches,
             'learning_rate':learning_rate/1000,
             'learning_decay_':learning_decay_,
@@ -74,8 +74,8 @@ def filter_table_option_nag():
             'algo':"nag", 
             "batch_size":batch_size }
     if learning_decay_:
-        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )        
-        hyp.update({'decay_factor':decay_factor})
+        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )
+        hyp['decay_factor'] = decay_factor
 
     return hyp
 
@@ -86,7 +86,7 @@ def filter_table_option_adagrad():
     learning_rate = st.sidebar.number_input('Learning rate', min_value = 0.5, max_value = 100.00, step = 0.01,value=2.5,key= 'learning_rate' )
     epsilon = st.sidebar.slider('Epsilon', 0.01, 1.0, step =0.1,value=0.9, key= 'epsilon')
     learning_decay_ = st.sidebar.checkbox("Learning decay")
-   
+
     hyp = {'num_epoches': num_epoches,
             'learning_rate':learning_rate/1000,
             'learning_decay_':learning_decay_,
@@ -94,8 +94,8 @@ def filter_table_option_adagrad():
             'algo':"adagrad", 
             "batch_size":batch_size }
     if learning_decay_:
-        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )        
-        hyp.update({'decay_factor':decay_factor})
+        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )
+        hyp['decay_factor'] = decay_factor
 
     return hyp
 
@@ -107,7 +107,7 @@ def filter_table_option_rmsprop():
     epsilon = st.sidebar.slider('Epsilon', 0.01, 1.0, step =0.1,value=0.9, key= 'epsilon')
     beta = st.sidebar.slider('Beta', 0.01, 1.0, step =0.1,value=0.9, key= 'beta')
     learning_decay_ = st.sidebar.checkbox("Learning decay")
-   
+
     hyp = {'num_epoches': num_epoches,
             'learning_rate':learning_rate/1000,
             'learning_decay_':learning_decay_,
@@ -116,8 +116,8 @@ def filter_table_option_rmsprop():
             'algo':"rmsprop", 
             "batch_size":batch_size }
     if learning_decay_:
-        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )        
-        hyp.update({'decay_factor':decay_factor})
+        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )
+        hyp['decay_factor'] = decay_factor
 
     return hyp
 
@@ -130,7 +130,7 @@ def filter_table_option_adam():
     beta1 = st.sidebar.slider('Beta1', 0.01, 1.0, step =0.1,value=0.9, key= 'beta')
     beta2 = st.sidebar.slider('Beta2', 0.01, 1.0, step =0.1,value=0.9, key= 'beta2')
     learning_decay_ = st.sidebar.checkbox("Learning decay")
-   
+
     hyp = {'num_epoches': num_epoches,
             'learning_rate':learning_rate/1000,
             'learning_decay_':learning_decay_,
@@ -140,15 +140,14 @@ def filter_table_option_adam():
             'algo':"adam", 
             "batch_size":batch_size }
     if learning_decay_:
-        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )        
-        hyp.update({'decay_factor':decay_factor})
+        decay_factor = st.sidebar.slider('Decay Factor', 0.00, 1.0, step =0.05,value=0.75,key= 'decay_factor' )
+        hyp['decay_factor'] = decay_factor
 
     return hyp
 
 
 def trainer():
-    train = st.sidebar.button('🚀   Train the MNIST model')
-    return train
+    return st.sidebar.button('🚀   Train the MNIST model')
 
 
 

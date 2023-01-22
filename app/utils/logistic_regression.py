@@ -22,12 +22,8 @@ def initialize(num_inputs,num_classes):
     # num_classes = 10
     w = np.random.randn(num_classes, num_inputs) / np.sqrt(num_classes*num_inputs) # (10*784)
     b = np.random.randn(num_classes, 1) / np.sqrt(num_classes) # (10*1) 
-    
-    param = {
-        'w' : w, # (10*784)
-        'b' : b  # (10*1)
-    }
-    return param
+
+    return {'w': w, 'b': b}  # (10*784)  # (10*1)
 
 def softmax(z):
     """implement the softmax functions
@@ -43,8 +39,7 @@ def softmax(z):
 
 def neg_log_loss(pred, label):
     """implement the negative log loss"""
-    loss = -np.log(pred[int(label)])
-    return loss
+    return -np.log(pred[int(label)])
 
 def mini_batch_gradient(param, x_batch, y_batch):
     """implement the function to compute the mini batch gradient
@@ -117,7 +112,7 @@ def train(param, hyp , x_train, y_train, x_test, y_test):
     if bool(hyp['algo']) == "momentum":
         mu = hyp['mu']
         w_velocity = np.zeros(param['w'].shape)
-        b_velocity = np.zeros(param['b'].shape) 
+        b_velocity = np.zeros(param['b'].shape)
     if bool(hyp['algo']) == "adagrad":
         epsilon = 0.5
         update_w, update_b = 0,0
@@ -144,14 +139,14 @@ def train(param, hyp , x_train, y_train, x_test, y_test):
         rand_indices = np.random.choice(x_train.shape[0],x_train.shape[0],replace=False)
         num_batch = int(x_train.shape[0]/batch_size)
         batch_loss100 = 0
-        
-        if bool(hyp['learning_decay_']) == True:
+
+        if bool(hyp['learning_decay_']):
             try:
                 if test_accu_list[-1] - test_accu_list[-2] < 0.001:
                     learning_rate *= hyp['decay_factor']
             except:
                 pass
-            
+
             message = 'learning rate: %.8f' % learning_rate
             print(message)
 
