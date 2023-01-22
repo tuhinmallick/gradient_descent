@@ -115,10 +115,15 @@ This is an example of how to list things you need to use the package and how to 
    ```bash
    pip install -r requirements.txt
    ```
-4. Import the package in `.py`
-   ```bash
-   from insider_eda.eda_base import Exploratory_data_analysis
+4. Run the file
+   ```sh
+    setup.sh
    ```
+5. Run the streamlit app
+    ```bash
+   streamlit run app/dashboard.py
+   ```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
