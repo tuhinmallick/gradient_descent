@@ -19,7 +19,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/tuhinmallick/gradient_descent">
+  <a href="https://github.com/tuhinmallick/gradient_descent/app/data/sidebar_img.jpg">
     <img src="docs/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
