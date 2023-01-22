@@ -19,8 +19,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/tuhinmallick/gradient_descent/app/data/sidebar_img.jpg">
-    <img src="docs/images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/tuhinmallick/gradient_descent">
+    <img src="app/data/sidebar_img.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Gradient_descent</h3>
