@@ -25,20 +25,22 @@ def plot_Loss(train_loss_list,test_loss_list, figsize=(1400, 500)):
         width=figsize[0],
         height=figsize[1],
         xaxis_title="Epoch",
-        yaxis_title=f"Loss Function",
+        yaxis_title="Loss Function",
         hovermode="x unified",
-        legend=dict(orientation="h", yanchor="bottom", xanchor="right", y=1.0, x=1),
+        legend=dict(
+            orientation="h", yanchor="bottom", xanchor="right", y=1.0, x=1
+        ),
         template="plotly_dark",
         margin=dict(l=80, r=30, t=50, b=50),
         plot_bgcolor="#151934",
         paper_bgcolor="#151934",
-        title = {
+        title={
             'text': 'Loss Function ~ Epoch',
-            'y':0.95,
-            'x':0.5,
+            'y': 0.95,
+            'x': 0.5,
             "xanchor": 'center',
-            'yanchor': 'top'
-            }
+            'yanchor': 'top',
+        },
     )
     return fig
 
@@ -67,25 +69,28 @@ def plot_acc(train_accu_list,test_accu_list, figsize=(1400, 500)):
         width=figsize[0],
         height=figsize[1],
         xaxis_title="Epoch",
-        yaxis_title=f"Test Accuracy",
+        yaxis_title="Test Accuracy",
         hovermode="x unified",
-        legend=dict(orientation="h", yanchor="bottom", xanchor="right", y=1.0, x=1),
+        legend=dict(
+            orientation="h", yanchor="bottom", xanchor="right", y=1.0, x=1
+        ),
         template="plotly_dark",
         margin=dict(l=80, r=30, t=50, b=50),
         plot_bgcolor="#151934",
         paper_bgcolor="#151934",
-        title = {
+        title={
             'text': 'Test Accuracy ~ Epoch',
-            'y':0.95,
-            'x':0.3,
+            'y': 0.95,
+            'x': 0.3,
             "xanchor": 'center',
-            'yanchor': 'top'
-            }
+            'yanchor': 'top',
+        },
     )
     return fig1
 def plot_params(dw_list,db_list,batch_loss_list,epoch, figsize=(1400, 500)):
     """store the plots"""
-    import pdb;pdb.set_trace()
+    import pdb
+    pdb.set_trace()
     epoch_list = epoch
     fig1 = go.Figure()
     fig1.add_trace(
@@ -117,19 +122,21 @@ def plot_params(dw_list,db_list,batch_loss_list,epoch, figsize=(1400, 500)):
         width=figsize[0],
         height=figsize[1],
         xaxis_title="Epoch",
-        yaxis_title=f"Test Accuracy",
+        yaxis_title="Test Accuracy",
         hovermode="x unified",
-        legend=dict(orientation="h", yanchor="bottom", xanchor="right", y=1.0, x=1),
+        legend=dict(
+            orientation="h", yanchor="bottom", xanchor="right", y=1.0, x=1
+        ),
         template="plotly_dark",
         margin=dict(l=80, r=30, t=50, b=50),
         plot_bgcolor="#151934",
         paper_bgcolor="#151934",
-        title = {
+        title={
             'text': 'Test Accuracy ~ Epoch',
-            'y':0.95,
-            'x':0.5,
+            'y': 0.95,
+            'x': 0.5,
             "xanchor": 'center',
-            'yanchor': 'top'
-            }
+            'yanchor': 'top',
+        },
     )
     return fig1
